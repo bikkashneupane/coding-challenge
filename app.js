@@ -5,6 +5,7 @@ import {
   calculateRevenue,
   calculateWorkingCapitalRatio,
 } from "./src/helpers/calculations.js";
+import { amountFormatter } from "./src/helpers/formatter.js";
 import { dataParser } from "./src/utils/dataParser.js";
 
 const filePath = "./src/data/data.json";
@@ -19,8 +20,8 @@ const main = async () => {
     const netProfitMargin = calculateNetProfitMargin(rewardsData.data);
     const workingCapitalRatio = calculateWorkingCapitalRatio(rewardsData.data);
 
-    console.log("Revenue: ", revenue);
-    console.log("Expenses: ", expense);
+    console.log("Revenue: ", amountFormatter(revenue));
+    console.log("Expenses: ", amountFormatter(expense));
     console.log("Gross Profit Margin: ", grossProfitMargin);
     console.log("Net Profit Margin: ", netProfitMargin);
     console.log("Working Capital Ratio: ", workingCapitalRatio);

@@ -1,3 +1,5 @@
+import { percentageFormatter } from "./formatter.js";
+
 // Calculate total revenue => account_category === revenue
 export const calculateRevenue = (data) => {
   const revenueArray = data.filter(
@@ -29,8 +31,8 @@ export const calculateGrossProfitMargin = (data) => {
     .reduce((acc, curr) => acc + curr.total_value, 0);
 
   const totalRevenue = calculateRevenue(data);
-  const grossProfitMargin = (salesDebit / totalRevenue) * 100;
-  return grossProfitMargin;
+  const grossProfitMargin = salesDebit / totalRevenue;
+  return percentageFormatter(grossProfitMargin);
 };
 
 // Calculate net profit margin in percentage: (revenue-expenses)/revenue*100
@@ -38,8 +40,8 @@ export const calculateNetProfitMargin = (data) => {
   const revenue = calculateRevenue(data);
   const expenses = calculateExpenses(data);
 
-  const netProftMargin = ((revenue - expenses) / revenue) * 100;
-  return netProftMargin;
+  const netProftMargin = (revenue - expenses) / revenue;
+  return percentageFormatter(netProftMargin);
 };
 
 // Calculate working capital ratio in percentage: (revenue-expenses)/revenue*100
@@ -80,14 +82,11 @@ export const calculateWorkingCapitalRatio = (data) => {
     }
   }
 
-  console.log("Assets: ", assets);
-  console.log("Liabilities: ", liabilities);
+  //   Working Capital Ration => assets/liabilities
+  const workingCapitalRatio = liabilities === 0 ? 0 : assets / liabilities;
 
-  //   Working Capital Ration => assets/liabilities*100
-  const workingCapitalRatio =
-    liabilities === 0 ? 0 : (assets / liabilities) * 100;
+  return percentageFormatter(workingCapitalRatio);
 
-  return workingCapitalRatio;
   //   //   Assets
   //   const debitAssets = data.filter(
   //     (item) =>
