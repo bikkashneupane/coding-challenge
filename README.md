@@ -2,8 +2,11 @@
 
 ### Express Branch ==> In this branch I have created a simpleexpress router with all the test cases and function logics.
 
+- feature/express branch
 - Run the project using npm run dev in development mode
 - Go to rest.http file to make GET request for each of the calcluations.
+
+## feature/rewards-accounting-metrics
 
 1. I have completed all the requested calculations, formatted correctly and have done some unit testing with jest as well.
 2. I have included all the required dependencies and steps to run the project as well, at the end of this document.
