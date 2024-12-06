@@ -1,11 +1,32 @@
+import {
+  calculateExpenses,
+  calculateGrossProfitMargin,
+  calculateNetProfitMargin,
+  calculateRevenue,
+  calculateWorkingCapitalRatio,
+} from "./src/helpers/calculations.js";
 import { dataParser } from "./src/utils/dataParser.js";
 
 const filePath = "./src/data/data.json";
 
-// Testing if file is being read properly
 const main = async () => {
-  const data = await dataParser(filePath);
-  console.log(data);
+  try {
+    // Reade the data/data.json file
+    const rewardsData = await dataParser(filePath);
+    const revenue = calculateRevenue(rewardsData.data);
+    const expense = calculateExpenses(rewardsData.data);
+    const grossProfitMargin = calculateGrossProfitMargin(rewardsData.data);
+    const netProfitMargin = calculateNetProfitMargin(rewardsData.data);
+    const workingCapitalRatio = calculateWorkingCapitalRatio(rewardsData.data);
+
+    console.log("Revenue: ", revenue);
+    console.log("Expenses: ", expense);
+    console.log("Gross Profit Margin: ", grossProfitMargin);
+    console.log("Net Profit Margin: ", netProfitMargin);
+    console.log("Working Capital Ratio: ", workingCapitalRatio);
+  } catch (error) {
+    console.log("Error: ", error.message);
+  }
 };
 
 main();
