@@ -1,3 +1,9 @@
+# Bikash-Neupane => Coding Challenges Summary:
+
+1. I have completed all the requested calculations, formatted correctly and have done some unit testing with jest as well.
+2. I have included all the required dependencies and steps to run the project as well, at the end of this document.
+3. You can check to feature/rewards-accounting-metrics branch for all the code and test cases.
+
 # RewardPay Coding Challenge
 
 ## Overview
